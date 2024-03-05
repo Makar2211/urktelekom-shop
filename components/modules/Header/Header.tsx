@@ -33,7 +33,7 @@ const Header = () => {
             </button>
           </li>
           {headerLinks.map((link) => (
-            <li>
+            <li key={link.imageURL}>
               <Link href={link.url}>
                 <Image
                   alt={link.alt}
