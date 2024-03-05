@@ -22,7 +22,7 @@ const Header = () => {
 
         <ul className={`link-reset ${styles.headerLinks}`}>
           <li>
-            <button className={`btn-reset ${styles.img}`}>
+            <button className={`btn-reset`}>
               <Image
                 alt='search'
                 src='/img/Search.svg'
