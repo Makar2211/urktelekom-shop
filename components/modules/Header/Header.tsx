@@ -32,9 +32,9 @@ const Header = () => {
               />
             </button>
           </li>
-          {headerLinks.map((link) => (
+          {/* {headerLinks.map((link) => (
             <li key={link.imageURL}>
-              <Link href={link.url}>
+              <Link key={link.imageURL} href={link.url}>
                 <Image
                   alt={link.alt}
                   src={link.imageURL}
@@ -44,7 +44,7 @@ const Header = () => {
                 />
               </Link>
             </li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </header>
