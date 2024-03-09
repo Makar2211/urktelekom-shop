@@ -23,16 +23,67 @@
 .header__links {
 	display: flex;
 	align-items: center;
-	gap: 20px;
-	margin: 0;
-	padding: 0;
 }
 
-.header__links__item__btn:hover {
+.header__links__item__btn {
+	width: 24px;
+	height: 24px;
+	display: block;
+	position: relative;
+}
+
+.header__links__item__btn::before {
+	background-color: #E8E9EA;
+	content: '';
+	height: 100%;
+	width: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
 	transition: background-color 0.2s ease-in-out;
-	color: #9466FF;
 }
 
+.header__links__item__btn--search::before {
+	-webkit-mask: url(/img/search.svg) no-repeat 50% 50%;
+	mask: url(/img/search.svg) no-repeat 50% 50%;
+}
+
+.header__links__item__btn--favorites::before {
+	-webkit-mask: url(/img/favorites.svg) no-repeat 50% 50%;
+	mask: url(/img/favorites.svg) no-repeat 50% 50%;
+}
+
+.header__links__item__btn--compare::before {
+	-webkit-mask: url(/img/compare.svg) no-repeat 50% 50%;
+	mask: url(/img/compare.svg) no-repeat 50% 50%;
+}
+
+.header__links__item__btn--cart::before {
+	-webkit-mask: url(/img/cart.svg) no-repeat 50% 50%;
+	mask: url(/img/cart.svg) no-repeat 50% 50%;
+}
+
+.header__links__item__btn--profile::before {
+	-webkit-mask: url(/img/profile.svg) no-repeat 50% 50%;
+	mask: url(/img/profile.svg) no-repeat 50% 50%;
+}
+
+.header__links__item__btn:hover::before {
+	transition: background-color 0.2s ease-in-out;
+	background-color: #9466FF;
+}
+
+.header__links__item__btn {
+	position: relative;
+}
+
+.header__links__item--profile {
+	border-radius: 50%;
+}
+
+.header__links__item:not(:last-child) {
+	margin-right: 32px;
+}
 
 .header__burger {
 	position: relative;
@@ -87,6 +138,10 @@
 
 	.header__burger {
 		display: none;
+	}
+
+	.header__links__item:not(:last-child) {
+		margin-right: 18px;
 	}
 
 	.header__links__item:not(:last-child) {

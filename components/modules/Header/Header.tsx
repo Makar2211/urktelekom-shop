@@ -1,50 +1,66 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-
 import Logo from '@/components/elements/Logo'
-import styles from './style.module.scss'
-import { headerLinks } from '@/constants/header'
 import useLang from '@/hooks/useLang'
+import Link from 'next/link'
+import Menu from './Menu'
+import { addOverflowHiddenToBody } from '@/lib/utils/common'
+import { openMenu } from '@/context/modals'
 
 const Header = () => {
   const { lang, transitions } = useLang()
+
+  const handleOnMenu = () => {
+    addOverflowHiddenToBody()
+    openMenu()
+  }
   return (
-    <header className={styles.header}>
-      <div className={`container ${styles.headerContainer}`}>
-        <button className={`btn-reset ${styles.headerBurger}`}>
+    <header className='header'>
+      <div className='container header__container'>
+        <button
+          className='btn-reset header__burger'
+          onClick={() => handleOnMenu()}
+        >
           {transitions[lang].header.menu_btn}
         </button>
-        <div className={styles.headerLogo}>
+        <Menu />
+
+        <div className='header__logo'>
           <Logo />
         </div>
 
-        <ul className={`link-reset ${styles.headerLinks}`}>
-          <li>
-            <button className={`btn-reset`}>
-              <Image
-                alt='search'
-                src='/img/Search.svg'
-                width={24}
-                height={24}
-                className={styles.img}
-              />
-            </button>
+        <ul className=' header__links list-reset'>
+          <li className='header__links__item'>
+            <button className='btn-reset header__links__item__btn header__links__item__btn--search'></button>
           </li>
-          {/* {headerLinks.map((link) => (
-            <li key={link.imageURL}>
-              <Link key={link.imageURL} href={link.url}>
-                <Image
-                  alt={link.alt}
-                  src={link.imageURL}
-                  width={25}
-                  height={25}
-                  className={styles.img}
-                />
-              </Link>
-            </li>
-          ))} */}
+
+          <li className='header__links__item'>
+            <Link
+              href='/favorites'
+              className='header__links__item__btn header__links__item__btn--favorites'
+            />
+          </li>
+
+          <li className='header__links__item'>
+            <Link
+              href='/compare'
+              className='btn-reset header__links__item__btn header__links__item__btn--compare'
+            />
+          </li>
+
+          <li className='header__links__item'>
+            <Link
+              href='/cart'
+              className='btn-reset header__links__item__btn header__links__item__btn--cart'
+            />
+          </li>
+
+          <li className='header__links__item'>
+            <Link
+              href='/profile'
+              className='btn-reset header__links__item__btn header__links__item__btn--profile'
+            />
+          </li>
         </ul>
       </div>
     </header>
